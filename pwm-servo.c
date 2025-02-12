@@ -18,6 +18,8 @@ int main() {
 
   while (true) {
     set_servo_position(2400);
+    set_servo_position(1470);
+    set_servo_position(500);
     sleep_ms(1000);
   }
 }
