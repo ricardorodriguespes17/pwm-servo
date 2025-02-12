@@ -20,6 +20,7 @@ int main() {
     set_servo_position(2400);
     set_servo_position(1470);
     set_servo_position(500);
+    smooth_moviment();
     sleep_ms(1000);
   }
 }
@@ -39,6 +40,17 @@ void config_servo() {
 
 void set_servo_position(uint16_t cycle) {
   pwm_set_gpio_level(SERVO_PIN, cycle);
-  // pwm_set_chan_level(servo_slice_num, SERVO_PIN, cycle);
   sleep_ms(5000);
+}
+
+void smooth_moviment() {
+  for (int i = 500; i <= 2400; i++) {
+    pwm_set_gpio_level(SERVO_PIN, i);
+    sleep_ms(10);
+  }
+
+  for (int i = 2400; i >= 500; i--) {
+    pwm_set_gpio_level(SERVO_PIN, i);
+    sleep_ms(10);
+  }
 }
